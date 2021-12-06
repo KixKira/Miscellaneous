@@ -1,0 +1,27 @@
+<p>
+    For the ngClass examples, we have in the first instance, an alert and two buttons. Each button performs an action that corresponds to the label. If we click on "Dark" it will change to black, and if we click on "Warning" it will change to yellow.
+</p>
+<div [ngClass]="alert" class="alert" role="alert">
+    A simple primary alert—check it out!
+</div>
+<br>
+<button type="button" class="btn btn-dark" (click)="alert = 'alert-dark'">Dark</button>
+<button type="button" class="btn btn-warning" (click)="alert = 'alert-warning'">Warning</button>
+<br><br>
+<p>
+    On the other hand, we have a "Hello World" in light blue and a button with the label "Change", when we click on it, both the button and the text will change to a red color. And vice versa.
+</p>
+<h4 [ngClass]="{'text-danger': property.danger, 'text-info': !property.danger}">
+    Hello World
+</h4>
+<button type="button" class="btn" (click)="property.danger = !property.danger" [ngClass]="{'btn-danger': property.danger, 'btn-info': !property.danger}">Change</button>
+<br><br>
+<p>
+    Lastly, we have an asynchronous process. The button displays a "Save Changes" and its respective icon. When you click on it, it disables it and shows a "Saving..." message for 3 seconds, the time is programmed in the component.
+</p>
+<h3>Asynchronous process</h3>
+<button type="button" class="btn btn-success" (click)="run()" [disabled]="loading">
+    <i [ngClass]="{'fa-save': !loading, 'fa-sync-alt fa-spin': loading}" class="fas"></i> 
+    <span *ngIf="!loading"> Save Changes</span>
+    <span *ngIf="loading"> Saving...</span>
+</button>
